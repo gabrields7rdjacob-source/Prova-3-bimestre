@@ -1,0 +1,13 @@
+{
+  "titular": "Jacob",
+  "cpf": 49712803,
+  "telefone": 99764404,
+  "email": "gabs@gmail.com",
+  "endereço": "Rua Belterra Santo Amaro 291",
+  "idade": 15,
+  "estado civil": "Preto",
+  "saldo": 100.0,
+  "historico": [
+    "Depósito de R$ 100.00"
+  ]
+}
