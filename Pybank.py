@@ -1,5 +1,6 @@
 import json
 import datetime
+import random
 
 def carregar_conta():
     try:
@@ -44,13 +45,29 @@ def extrato(conta):
             print(f"  {movimentacao}")
     print(f"--- Saldo atual: R$ {conta['saldo']:.2f}")
 
-print("--- Pybank ---")
-conta = carregar_conta()
+def dados(conta):
+    print(f"Nome: {nome_input}")
+    print(f"CPF: {cpf_input}")
+    print(f"N° Telefone {cell_inp}")
+    print(f"Email: {email_inp}")
+    print(f"Endereço: {endereco_inp}")
+    print(f"Idade: {idade_inp}")
+    print(f"Estado Civil: {civil_inp}")
 
+print("--- Pybank ---")
+login = input("Deseja logar?[s] | [n] ")
+if login == "s":
+    conta = carregar_conta()
+elif login == "n":
+    breakpoint
+else: 
+    print("INVÁLIDO")
+    breakpoint
+    
 if conta is None:
     print("--- Cadastro ---")
     nome_input = input("Digite o seu nome: ")
-    cpf_input = int(input("Digite seu CPF: "))
+    cpf_input = input("Digite seu CPF: ")
     print("--- Informações para Contato ---")
     cell_inp = int(input("Digite seu Número de Telefone: "))
     email_inp = input("Digite seu Email: ")
@@ -58,6 +75,7 @@ if conta is None:
     print("--- Informações Pessoais ---")
     idade_inp = int(input("Digite  sua Idade: "))
     civil_inp = input("Estado Civil: ")
+
     conta = {
         "titular": nome_input,
         "cpf": cpf_input,
@@ -70,11 +88,12 @@ if conta is None:
         "historico": []
     }
 else:
+    print("--- Pybank ---")
     print(f"Bem-vindo {conta['titular']}!")
 
 while True:
     print(f"\nSaldo atual: R$ {conta['saldo']:.2f}")
-    opcao = input("[1] Depositar | [2] Levantar | [3] Extrato | [4] Guardar e Sair: ")
+    opcao = input("[1] Depositar | [2] Levantar | [3] Extrato | [4] Dados da Conta | [5] Guardar e Sair: ")
     
     if opcao == "1" or opcao == "2":
         try:
@@ -89,8 +108,11 @@ while True:
             
     elif opcao == "3":
         extrato(conta)
-        
+
     elif opcao == "4":
+        dados(conta)
+        
+    elif opcao == "5":
         salvar_conta(conta)
         break
         
